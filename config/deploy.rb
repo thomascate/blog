@@ -12,6 +12,7 @@ set :keep_releases, 5
 namespace :deploy do
   desc 'Restart application'
   task :restart do
+    system( "sh /home/deploy/current/config/unicorn_restart" )
     hot_restart_unicorn()
   end
 
