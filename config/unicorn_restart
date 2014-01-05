@@ -1,0 +1,12 @@
+#!/bin/sh
+#forces a hot restart of unicorn
+PATH="$HOME/.rbenv/shims:$PATH"
+PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+PID=$(ps -ef | egrep '[u]nicorn master' | awk '{print $2}')
+if ! kill -0 $PID > /dev/null 2>&1; then
+  echo "couldn't find unicorn pid to kill, attempting to start"
+  `cd /var/www/homepage/current; bundle exec unicorn -D -c /var/www/homepage/unicorn.rb -E staging`
+else
+  `kill -USR2 "$PID"`
+fi
