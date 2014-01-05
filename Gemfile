@@ -40,3 +40,8 @@ gem 'jquery-rails'
 group :development do
   gem 'capistrano'
 end
+
+group :production, :staging do
+  gem 'unicorn'
+  gem 'capistrano'
+end
