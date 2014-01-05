@@ -37,11 +37,7 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-group :development do
-  gem 'capistrano'
-end
-
-group :production, :staging do
+group :development, :production, :staging do
   gem 'unicorn'
   gem 'capistrano'
 end
