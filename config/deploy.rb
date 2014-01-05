@@ -12,7 +12,9 @@ set :keep_releases, 5
 namespace :deploy do
   desc 'Restart application'
   task :restart do
-    sh "/home/deploy/current/config/unicorn_restart"
+    on roles(:web) do
+      execute "sh /home/deploy/current/config/unicorn_restart"
+    end
   end
 
   after :finishing, 'deploy:cleanup'

@@ -1,6 +1,6 @@
 set :stage, :staging
 set :branch, 'master'
-roles = ['app', 'web']
+roles = 'web'
 
 
-server 'rails.luddite.nl', user: 'deploy', roles: roles
+server 'rails.luddite.nl', user: 'deploy', roles: 'web'
